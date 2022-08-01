@@ -1,18 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes em cartaz</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
 <?php
-include_once('./select-city.html');
-@$city = $_GET['city'] ? $_GET['city'] : 'sao_paulo';
-
-$BASE_URL = "https://www.cinemark.com.br/";
-$finalUrl = "$BASE_URL$city/filmes/em-cartaz";
-$content = file_get_contents($finalUrl);
-
-$document = new DOMDocument();
-@$document->loadHTML($content);
-
-$xPath = new DOMXPath($document);
-$elements = $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," movie-title ")]/a');
-
-echo "<h3> Filmes em cartaz (" . ucwords(preg_replace('/(_)/', ' ', $city)) . ") </h3>";
-foreach ($elements as $movieNode) {
-    echo $movieNode->textContent . "<br>";
-}
+require_once('./select-city.html');
+require_once('./movie-list.php');
