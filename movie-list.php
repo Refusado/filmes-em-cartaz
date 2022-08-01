@@ -16,7 +16,7 @@ foreach ($moviesSourceTag as $item) {
     array_push($moviesImagesUrls, $item->attributes[1]->value);
 }
 
-$moviesRatingTag =  $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," rating-abbr ")]');
+$moviesRatingTag = $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," rating-abbr ")]');
 $moviesRating = [];
 foreach ($moviesRatingTag as $item) {
     array_push($moviesRating, $item->textContent);
@@ -24,7 +24,6 @@ foreach ($moviesRatingTag as $item) {
 
 $moviesList = [];
 for ($i = 1; $i <= count($moviesDetails); $i++) {
-
     $currentMovie = new Movie;
     $currentMovie->name = $moviesNames[$i - 1];
     $currentMovie->imgUrl = $moviesImagesUrls[$i - 1];

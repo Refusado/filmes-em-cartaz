@@ -17,9 +17,9 @@ require_once('getCity.php');
 <?php
 echo $selectCity;
 echo "<h1> Filmes em cartaz ($cityName) </h1>";
-echo "<pre>";
-print_r($moviesList);
-echo "</pre>";
+if (!count($moviesDetails)) {
+    echo "Não há filmes em cartaz nesta cidade :\\";
+}
 
 foreach ($moviesList as $movie) {
     $movie->showName();
