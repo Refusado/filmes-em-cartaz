@@ -1,3 +1,8 @@
+<?php
+require_once('select-city.php');
+require_once('movie-list.php');
+require_once('getCity.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +14,22 @@
 </head>
 
 <body>
+<?php
+echo $selectCity;
+echo "<h1> Filmes em cartaz ($cityName) </h1>";
+echo "<pre>";
+print_r($moviesList);
+echo "</pre>";
 
+foreach ($moviesList as $movie) {
+    $movie->showName();
+    $movie->showImage();
+    $movie->showTrailer();
+    $movie->showRating();
+
+    echo "<hr>";
+}
+?>
 </body>
 
 </html>
-<?php
-require_once('./select-city.html');
-require_once('./movie-list.php');

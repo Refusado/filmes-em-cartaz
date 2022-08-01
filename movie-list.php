@@ -1,15 +1,5 @@
 <?php
-@$city = $_GET['city'] ? $_GET['city'] : 'sao_paulo';
-
-$BASE_URL = "https://www.cinemark.com.br/";
-$finalUrl = "$BASE_URL$city/filmes/em-cartaz";
-$content = file_get_contents($finalUrl);
-
-$document = new DOMDocument();
-@$document->loadHTML($content);
-
-$xPath = new DOMXPath($document);
-
+require_once('getDocument.php');
 
 require_once('./Movie.php');
 $moviesDetails = $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," movie-details ")]');
@@ -32,7 +22,7 @@ foreach ($moviesRatingTag as $item) {
     array_push($moviesRating, $item->textContent);
 }
 
-$allMovies = [];
+$moviesList = [];
 for ($i = 1; $i <= count($moviesDetails); $i++) {
 
     $currentMovie = new Movie;
@@ -41,17 +31,12 @@ for ($i = 1; $i <= count($moviesDetails); $i++) {
 
     $trailerTag = $xPath->query('.//*[@data-title="' . $currentMovie->name . '"]')[0];
     if ($trailerTag) {
-        $currentMovie->trailerUrl = $trailerTag->attributes[0]->value;
+        $localEmbedUrl = $trailerTag->attributes[0]->value;
+        $embedUrl = "https:$localEmbedUrl";
+        $currentMovie->trailerUrl = preg_replace('/(embed\/)/', 'watch?v=', $embedUrl);
     }
     $currentMovie->rating = $moviesRating[$i - 1];
 
-    array_push($allMovies, $currentMovie);
+    array_push($moviesList, $currentMovie);
 }
-
-
-
-echo "<h3> Filmes em cartaz (" . ucwords(preg_replace('/(_)/', ' ', $city)) . ") </h3>";
-
-foreach ($allMovies as $m) {
-    echo $m->name . "<br>";
-}
+?>
