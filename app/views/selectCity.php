@@ -1,7 +1,8 @@
-<?php 
+<?php
 # a lista de cidades do site original é exibida a partir do navegador e não do servidor, por isso não é possível fazer web sraping nela
-$selectCity = '
-<form action="./" method="get">
+function showCitySelector() {
+echo
+'<form action="./" method="get">
     <select id="city" name="city">
         <option value="sao_paulo">SÃO PAULO</option>
         <option value="aracaju">ARACAJU</option>
@@ -55,4 +56,5 @@ $selectCity = '
     </select>
     <input type="submit" value="Pesquisar">
 </form>';
+}
 ?>
