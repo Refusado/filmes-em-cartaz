@@ -1,6 +1,5 @@
 <?php
-require_once './models/getCity.php';
-require_once './models/getDocument.php';
+require_once realpath(__DIR__ . '/../models/getDocument.php');
 require_once 'Movie.class.php';
 
 $moviesDetails = $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," movie-details ")]');
@@ -23,7 +22,7 @@ foreach ($moviesRatingTag as $item) {
   array_push($moviesRating, $item->textContent);
 }
 
-$moviesList = [];
+$_moviesList = [];
 for ($i = 1; $i <= count($moviesDetails); $i++) {
   $currentMovie = new Movie;
   $currentMovie->setName($moviesNames[$i - 1]);
@@ -37,6 +36,8 @@ for ($i = 1; $i <= count($moviesDetails); $i++) {
   }
   $currentMovie->setRating($moviesRating[$i - 1]);
 
-  array_push($moviesList, $currentMovie);
+  array_push($_moviesList, $currentMovie);
 }
+
+$_moviesNo = count($_moviesList);
 ?>

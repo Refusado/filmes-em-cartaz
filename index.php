@@ -1,6 +1,6 @@
 <?php
-require_once 'views/selectCity.php';
-require_once 'views/movieList.php';
+require_once 'app/views/movieList.php';
+require_once 'app/views/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@ require_once 'views/movieList.php';
 
 <body>
   <?php
-  showCitySelector();
+  showHeader();
   showMoviesList();
   ?>
 </body>

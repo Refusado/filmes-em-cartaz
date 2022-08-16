@@ -1,15 +1,12 @@
 <?php
+require_once realpath(__DIR__ . '/../models/getCity.php');
 require_once realpath(__DIR__ . '/../controllers/allMovies.php');
 require_once 'selectCity.php';
 
-echo "<h1> Filmes em cartaz ($cityName) </h1>";
-if (!count($moviesDetails)) {
-  echo "Não há filmes em cartaz nesta cidade :\\";
-}
-
 function showMoviesList() {
-  global $moviesList;
-  foreach ($moviesList as $movie) {
+  global $_moviesList;
+
+  foreach ($_moviesList as $movie) {
     $name = $movie->getName();
     $imgUrl = $movie->getImage();
     $rating = $movie->getRating();
