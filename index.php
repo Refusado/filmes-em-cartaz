@@ -10,6 +10,7 @@ require_once 'app/views/header.php';
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filmes em cartaz</title>
+  <link rel="stylesheet" href="public/css/styles.css">
 </head>
 
 <body>
