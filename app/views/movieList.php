@@ -12,15 +12,16 @@ function showMoviesList() {
     $rating = $movie->getRating();
     $trailerUrl = $movie->getTrailer();
     $trailer = $trailerUrl ?
-    "<a class='bg-green-700 border border-gray-100 text-gray-100 opacity-90 cursor-pointer inline rounded py-2 px-3
-    duration-100 hover:opacity-100' href='$trailerUrl' target='_blank'>TRAILER</a>" :
-    "<p class='bg-gray-600  border border-gray-200 text-gray-100 opacity-70 cursor-default inline rounded py-2 px-3' title='Sem trailer disponível'>TRAILER</p>";
+    "<a class='bg-indigo-800 border border-gray-100 text-gray-100 opacity-80 cursor-pointer inline rounded py-2 px-3 shadow-lg
+    duration-200 hover:opacity-100' href='$trailerUrl' target='_blank'>TRAILER</a>" :
+    "<p class='bg-gray-800  border border-gray-200 text-gray-100 opacity-70 cursor-default inline rounded py-2 px-3 shadow-lg' title='Sem trailer disponível'>TRAILER</p>";
     
     echo "
-    <div class='border-green-400 w-11/12 max-w- h-56 md:w-48 flex'>
+    <div class='w-10/12 md:w-fit h-52 flex overflow-hidden rounded shadow-xl'>
       <img class='h-full inline-block' src='$imgUrl' alt='$name' title='$name'/>
-      <div class='bg-blue-800 w-full py-3 flex flex-col justify-between'>
-        <h3 class='bg-blue-400 text-lg leading-5'>$name</h3>
+      <div class='w-full py-3 flex flex-col justify-between bg-gradient-to-b from-gray-900 via-gray-800 to-slate-900'>
+        <h3 class='md:w-56 px-4 py-1 text-lg text-red-50 tracking-wide leading-5'>$name</h3>
+
         <div class='h-fit flex justify-between items-center flex-wrap gap-3 select-none px-3 pt-3 border-t border-dashed border-gray-400 text-xs font-bold'>
           <span class='";
           switch ($rating) {
@@ -47,7 +48,7 @@ function showMoviesList() {
             title='Classificação indicativa de $rating anos'>
             $rating
           </span>
-          <span class='h-fit py-1 shadow-md'>$trailer</span>
+          <span class='h-fit py-1'>$trailer</span>
         </div>
       </div>
     </div>

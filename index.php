@@ -13,9 +13,9 @@ require_once 'app/views/header.php';
   <link rel="stylesheet" href="./public/css/styles.css">
 </head>
 
-<body class="bg-red-200">
+<body class="bg-gradient-to-r from-red-800 via-red-900 to-red-800 text-red-50">
   <?php showHeader(); ?>
-  <div class="container mx-auto bg-red-400 flex flex-wrap justify-center gap-2 py-2">
+  <div class="container mx-auto flex flex-wrap justify-center gap-6 py-2">
     <?php showMoviesList(); ?>
   </div>
 </body>
