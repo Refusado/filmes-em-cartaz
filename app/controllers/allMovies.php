@@ -20,7 +20,12 @@ $_moviesList = [];
 for ($i = 1; $i <= count($moviesDetails); $i++) {
   $currentMovie = new Movie;
   $currentMovie->setName($moviesNames[$i - 1]);
-  $currentMovie->setImage($moviesImagesUrls[$i - 1]);
+
+  if ($moviesImagesUrls[$i - 1] == "/content/assets/images/default/img-movie-md.jpg") {
+    $currentMovie->setImage("public/img/default-image.png");
+  } else {
+    $currentMovie->setImage($moviesImagesUrls[$i - 1]);
+  }
 
   $trailerTag = $xPath->query('.//*[@data-title="' . $currentMovie->name . '"]')[0];
   if ($trailerTag) {
