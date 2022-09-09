@@ -8,26 +8,33 @@ function showMoviesList() {
 
   foreach ($_moviesList as $movie) {
     $name = $movie->getName();
+    $anchor = $movie->getAnchor();
     $imgUrl = $movie->getImage();
     $rating = $movie->getRating();
     switch ($rating) {
       case "L":
-        $ratingBg = "bg-green-600";
+        $ratingBg = "bg-[#009017]";
+        $ratingTitle = "Livre para todos os públicos.";
         break;
       case "10":
-        $ratingBg = "bg-blue-500";
+        $ratingBg = "bg-[#0181DA]";
+        $ratingTitle = "Não recomendado para menores de 10 anos";
         break;
       case "12":
-        $ratingBg = "bg-yellow-500";
+        $ratingBg = "bg-[#FACD12]";
+        $ratingTitle = "Não recomendado para menores de 12 anos";
         break;
       case "14":
-        $ratingBg = "bg-orange-400";
+        $ratingBg = "bg-[#F08A0E]";
+        $ratingTitle = "Não recomendado para menores de 14 anos";
         break;
       case "16":
-        $ratingBg = "bg-red-600";
+        $ratingBg = "bg-[#CF0008]";
+        $ratingTitle = "Não recomendado para menores de 16 anos";
         break;
       case "18":
-        $ratingBg = "bg-neutral-800";
+        $ratingBg = "bg-[#000000]";
+        $ratingTitle = "Não recomendado para menores de 18 anos";
         break;
     } 
     $trailerUrl = $movie->getTrailer();
@@ -49,12 +56,12 @@ function showMoviesList() {
         <div class='py-2 mb-3 text-xs font-bold text-zinc-300'>$trailer</div>
 
         <div class='mt-auto flex justify-start items-center flex-nowrap'>
-          <span class='${ratingBg} select-none text-sm font-bold text-zinc-300 flex justify-center items-center h-8 w-8 p-1.5 min-w-fit rounded border border-zinc-500
+          <span class='$ratingBg select-none text-sm font-bold text-white flex justify-center items-center h-7 w-7 p-0.5 min-w-fit rounded border border-zinc-500
           lg:opacity-0 lg:-translate-x-6 lg:group-hover:opacity-100 lg:group-hover:-translate-x-0 duration-500'
-            title='Classificação indicativa de $rating anos'>
+            title='$ratingTitle'>
             $rating
           </span>
-          <a class='p-2 text-sm md:text-base underline uppercase ml-6 text-red-500 opacity-70 tracking-widest cursor-pointer
+          <a href='$anchor' class='p-2 text-sm md:text-base underline uppercase ml-6 text-red-500 opacity-70 tracking-widest cursor-pointer
           lg:opacity-0 lg:-translate-x-6 lg:group-hover:opacity-90 lg:group-hover:-translate-x-0 duration-500 delay-100'>Saiba mais</a>
         </div>
       </div>

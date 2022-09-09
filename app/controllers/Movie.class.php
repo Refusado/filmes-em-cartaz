@@ -13,6 +13,13 @@ class Movie {
     return $this->name;
   }
 
+  function setAnchor($a) {
+    $this->anchor = $a;
+  }
+  function getAnchor() {
+    return $this->anchor;
+  }
+
   function setImage($i) {
     $this->imgUrl = $i;
   }

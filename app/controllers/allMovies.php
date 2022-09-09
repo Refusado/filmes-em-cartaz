@@ -10,6 +10,12 @@ foreach ($moviesImgTag as $item) {
   array_push($moviesNames, $item->attributes[2]->value);
 }
 
+$moviesAnchorTag = $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," movie-image ")]');
+$moviesLinks = [];
+foreach ($moviesAnchorTag as $item) {
+  array_push($moviesLinks, $BASE_URL . $item->attributes[0]->value);
+}
+
 $moviesSourceTag = $xPath->query('.//*[contains(concat(" ",normalize-space(@class)," ")," movie-image ")]//picture/source');
 $moviesImagesUrls = [];
 foreach ($moviesSourceTag as $item) {
@@ -20,6 +26,7 @@ $_moviesList = [];
 for ($i = 1; $i <= count($moviesDetails); $i++) {
   $currentMovie = new Movie;
   $currentMovie->setName($moviesNames[$i - 1]);
+  $currentMovie->setAnchor($moviesLinks[$i - 1]);
 
   if ($moviesImagesUrls[$i - 1] == "/content/assets/images/default/img-movie-md.jpg") {
     $currentMovie->setImage("public/img/default-image.png");
