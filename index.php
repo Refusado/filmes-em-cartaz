@@ -13,11 +13,17 @@ require_once 'app/views/header.php';
   <link rel="stylesheet" href="./public/css/styles.css">
 </head>
 
-<body class="bg-gradient-to-r from-zinc-900 via-zinc-900 to-zinc-900">
+<body class="bg-zinc-900 text-zinc-300">
+
   <?php showHeader(); ?>
   <div class="container mx-auto flex flex-wrap justify-center gap-y-8 gap-x-5 py-2">
     <?php showMoviesList(); ?>
   </div>
+  <div id="popup-container" class="bg-[#000000cb] h-full min-h-full w-full min-w-full justify-center items-center flex-wrap fixed top-0 left-0 hidden">
+
+  </div>
+
+  <script src="./public/js/main.js"></script>
 </body>
 
 </html>

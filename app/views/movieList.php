@@ -42,7 +42,7 @@ function showMoviesList() {
     "<a class='bg-zinc-200 text-zinc-700 select-none cursor-pointer border border-zinc-300 inline rounded-sm py-2 px-3 lg:shadow-md hover:shadow-zinc-400 opacity-90
     duration-200' href='$trailerUrl' target='_blank'>TRAILER</a>" :
     
-    "<p class='bg-zinc-800                 select-none cursor-default border border-zinc-300 inline rounded-sm py-2 px-3 opacity-30'
+    "<p class='invalid-trailer-btn bg-zinc-800                 select-none cursor-default border border-zinc-300 inline rounded-sm py-2 px-3 opacity-30'
     title='Sem trailer disponível'>TRAILER</p>";
     
     
@@ -61,7 +61,7 @@ function showMoviesList() {
             title='$ratingTitle'>
             $rating
           </span>
-          <a href='$anchor' class='p-2 text-sm md:text-base underline uppercase ml-6 text-red-500 opacity-70 tracking-widest cursor-pointer
+          <a target='_blank' href='$anchor' class='p-2 text-sm md:text-base underline uppercase ml-6 text-red-500 opacity-70 tracking-widest cursor-pointer
           lg:opacity-0 lg:-translate-x-6 lg:group-hover:opacity-90 lg:group-hover:-translate-x-0 duration-500 delay-100'>Saiba mais</a>
         </div>
       </div>
@@ -69,6 +69,4 @@ function showMoviesList() {
     ";
   }
 }
-
-// flex-col justify-end
 ?>
